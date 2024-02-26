@@ -18,10 +18,31 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #0E1018;
+}
+
+nav {
+  background-color: #0E1018;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+hr {
+  border-color: #4560b8;
+  border-radius: 5px;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+  border-width: 0.1rem;
+}
+
+h1 {
+  font-size: larger;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: large;
+  font-weight: 500;
 }

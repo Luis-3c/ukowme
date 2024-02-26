@@ -1,0 +1,14 @@
+.newQuestionContainer{
+    background-color: #070914;
+}
+
+#newQuestionInput {
+    height: 48px;
+    transition: height 0.3s ease-in-out;
+    resize: none;
+}
+
+#newQuestionInput:focus {
+    height: 80px;
+    outline: none;
+}

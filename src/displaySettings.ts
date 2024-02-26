@@ -1,0 +1,1 @@
+export const questionsPerQuiz = 5;
