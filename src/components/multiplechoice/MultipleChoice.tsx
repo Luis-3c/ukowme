@@ -1,7 +1,8 @@
+import { Option } from "@/interfaces/quiz";
 import { useEffect, useState } from "react";
 
 interface Props {
-    options: string[],
+    options: Option[],
     setSelectedOption : (arg0: number | null) => void
 }
 export default function MultipleChoice({options, setSelectedOption} : Props) {
@@ -21,7 +22,7 @@ export default function MultipleChoice({options, setSelectedOption} : Props) {
 
   return (
     <>
-      {options?.map((option, i) => (
+      {options?.map(({option}, i) => (
         <div key={i} className='grid grid-cols-2 w-36 sm:w-80 mx-auto mb-4 text-2xl'>
           <input
             type="checkbox"
@@ -43,7 +44,7 @@ export default function MultipleChoice({options, setSelectedOption} : Props) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
             </svg>
           </label>
-          <span>{option}</span>
+          <span className=" sm:w-max">{option}</span>
         </div>
       ))}
     </>

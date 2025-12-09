@@ -6,10 +6,10 @@ export default async function Questions() {
 
   return (
     <div className="mt-10">
-      <h1 className="mb-4 pl-5">My qyestions</h1>
-      <div className="grid xl:grid-cols-3 xl:gap-6 lg:grid-cols-2 md:grid-cols-2 md:gap-6">
-        {questions.map((q) => (
-          <QuestionCard key={q.id} />
+      <h1 className="mb-4">My qyestions</h1>
+      <div className="grid 2xl:grid-cols-3 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 gap-6">
+        {questions.map((q, i) => (
+          <QuestionCard key={i} question={q} />
         ))}
       </div>
     </div>

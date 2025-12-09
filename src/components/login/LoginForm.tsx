@@ -1,17 +1,17 @@
 "use client";
 
 import Input from "@/components/ui/Input";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { login } from "@/services/userService";
-import { useUserContext } from "@/hooks/useUserContext";
 import BtnViolet from "../ui/BtnViolet";
 import ErrorMsg from "../ui/ErrorMsg";
+import { userContext } from "@/context/userContext";
 
 export default function LoginForm() {
   const [isLogged, setIsLogged] = useState(false);
-  const { user, setUser } = useUserContext();
+  const { user, setUser } = useContext<any>(userContext);
   const router = useRouter();
 
   const {
@@ -22,7 +22,7 @@ export default function LoginForm() {
 
   const onSubmit = async (data: FieldValues) => {
     console.log(data);
-    const res = await login();
+    const res = await login(data.name, data.password);
     console.log("res: ", res);
     setUser(res);
     setIsLogged(true);

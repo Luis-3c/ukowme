@@ -1,11 +1,11 @@
 "use client"
 
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import styles from "./newQuestion.module.css";
-import { useUserContext } from "@/hooks/useUserContext";
+import { userContext } from "@/context/userContext";
 
 export default function NewQuestion(){
-  const { user } = useUserContext();
+  const { user } = useContext<any>(userContext);
   const newQuestionInput = useRef<HTMLTextAreaElement>();
   const answerInput = useRef<HTMLTextAreaElement>();
   const [newQuestionFocus, setNewQuestionFocus] = useState(false);

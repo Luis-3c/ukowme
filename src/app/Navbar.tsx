@@ -1,4 +1,7 @@
+import { NavbarOptions } from "@/components/navbarOptions/NavbarOptions";
+
 export default function Navbar(){
+
   return (
     <nav className="flex justify-between flex-wrap p-6 lg:px-48">
       <div className="flex items-center flex-shrink-0 text-violet-700 mr-6">
@@ -29,20 +32,7 @@ export default function Navbar(){
       </div> 
       <div className="w-full block flex-grow items-center sm:flex sm:w-auto">
         <div className="text-sm sm:flex-grow"></div>
-        <div className="flex flex-col sm:flex-row sm:block ">
-            <a
-              href="#"
-              className=" text-sm px-4 py-2 rounded-md border mt-5 text-center lg:mt-10 text-white border-gray-400 hover:bg-gray-700  transition-colors"
-            >
-              Log In
-            </a>
-            <a
-              href="#"
-              className=" text-sm px-4 py-2 rounded-md border sm:ml-5 mt-5 text-center lg:mt-10 text-white border-gray-400 hover:bg-gray-700 transition-colors"
-            >
-              Sign Up
-            </a>
-        </div>
+        <NavbarOptions />
       </div>
     </nav>
   );

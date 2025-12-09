@@ -1,5 +1,8 @@
 import { QuizSummary } from "@/interfaces/chart";
 import { QuizQuestion } from "@/interfaces/quiz";
+import {cookies} from 'next/headers';
+import {API_ENDPOINT} from '@/config.js'
+import { Question } from "@/interfaces/question";
 
 export const getLatQuizes = (): Promise<QuizSummary[]> => {
   return new Promise((resolve, reject) => {
@@ -32,36 +35,25 @@ export const getLatQuizes = (): Promise<QuizSummary[]> => {
   });
 };
 
-export const getQuizQuestions = () :  Promise<QuizQuestion[]> => { 
-  return new Promise((resolve, reject) => {
-    setTimeout(() =>{
-      const questions = [{
-        id: 1,
-        question: '¿Cual es mi color favorito?',
-        answer: 'Rojo',
-        options: ['Azul', 'Rojo', 'Verde', 'Morado', 'Rosa']
-    }, {
-        id: 2,
-        question: '¿Cual es mi comida favorita?',
-        answer: 'Milanesa',
-        options: ['Azul', 'Rojo', 'Verde', 'Morado', 'Rosa']
-    }, {
-        id: 3,
-        question: 'prueba 3',
-        answer: 'prueba 3',
-        options: ['Azul', 'Rojo', 'Verde', 'Morado', 'Rosa']
-    }, {
-        id: 4,
-        question: 'Prueba 4',
-        answer: 'prueba 4',
-        options: ['Azul', 'Rojo', 'Verde', 'Morado', 'Rosa']
-    }, {
-        id: 5,
-        question: 'Prueba 5',
-        answer: 'prueba 5',
-        options: ['Azul', 'Rojo', 'Verde', 'Morado', 'Rosa']
-    }];
-    resolve(questions);
-    }, 2000)
+export const getQuizQuestions = (userName: String): Promise<QuizQuestion[]> => {
+  return fetch(API_ENDPOINT + "getQuizQuestions/" + userName, {
+    headers: { Cookie: cookies().toString() },
   })
- }
+    .then((res) => res.json())
+    .then((res) => {
+      return res.questions;
+    });
+};
+
+export const getOptions = (question: Question): Promise<QuizQuestion[]> => {
+  const req = {
+    question
+  };
+  return fetch(API_ENDPOINT + "getOptions/", {
+    headers: { Cookie: cookies().toString() },
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      return res.questions;
+    });
+};
